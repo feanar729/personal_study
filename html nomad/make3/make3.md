@@ -15,4 +15,5 @@ You will need to use new properties like ‘box-shadow’ and ‘border-radius�
 
 구현 과제 실행
 - 결과물: https://codesandbox.io/s/myo48w44yx
-- 정답:  
+- 정답: https://codesandbox.io/s/1on3n2430l
+ 
