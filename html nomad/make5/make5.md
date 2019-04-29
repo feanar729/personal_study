@@ -10,10 +10,10 @@ Make the <u>HTML</u> (only HTML!, not CSS) of the following screens:
 Requirements:
 
 - Use a combination of classes and IDs
-- Try to use semantic tags such as <section> <header> <footer> 
+- Try to use semantic tags such as <section> <header> <footer>
 - etc... Use Font Awesome Icons and Images
 
 구현 과제 실행
-- 결과물: https://codesandbox.io/s/9ok0lr13qp (수정필요)
-- 정답: https://codesandbox.io/s/ol6r9r81q6 
- 
+
+- 결과물: https://codesandbox.io/s/9ok0lr13qp
+- 정답: https://codesandbox.io/s/ol6r9r81q6
