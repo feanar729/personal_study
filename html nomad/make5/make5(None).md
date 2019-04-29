@@ -1,7 +1,7 @@
 # Coding Challenge 05
 
 Based on what you learnt on the practice videos #1.1 to #1.5.
-Make the HTML (only HTML!, not CSS) of the following screens:
+Make the <u>HTML</u> (only HTML!, not CSS) of the following screens:
 
 ![image1](./image/food_app_2.png)
 
@@ -9,11 +9,11 @@ Make the HTML (only HTML!, not CSS) of the following screens:
 
 Requirements:
 
-Use a combination of classes and IDs
-Try to use semantic tags such as <section> <header> <footer> etc…
-Use Font Awesome Icons and Images
+- Use a combination of classes and IDs
+- Try to use semantic tags such as <section> <header> <footer> 
+- etc... Use Font Awesome Icons and Images
 
 구현 과제 실행
-- 결과물: 
-- 정답: 
+- 결과물: https://codesandbox.io/s/9ok0lr13qp (수정필요)
+- 정답: https://codesandbox.io/s/ol6r9r81q6 
  
