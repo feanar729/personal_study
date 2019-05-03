@@ -16,4 +16,4 @@ You don’t need to reproduce the phone, you can do it by CSS but is not necessa
 구현 과제 실행
 
 - 결과물: https://codesandbox.io/s/1qyxxml724
-- 정답:
+- 정답: https://codesandbox.io/s/7wkzmj8n9q
