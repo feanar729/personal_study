@@ -14,4 +14,4 @@ Requirements:
 구현 과제 실행
 
 - 결과물: https://codesandbox.io/s/342nl2lrnq
-- 정답:
+- 정답: https://codesandbox.io/s/48p48w2wv9
