@@ -17,7 +17,7 @@
 
 ---
 
-## HTML CSS 실습(grid, flex 위주)
+## HTML CSS 실습 [grid, flex 위주]
 
 ### 진행 목표
 
