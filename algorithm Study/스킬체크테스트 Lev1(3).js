@@ -1,4 +1,4 @@
-// 프로그래머스 프린터 [미해결]
+// 프로그래머스 프린터
 // https://programmers.co.kr/learn/courses/30/lessons/42587?language=javascript
 function solution(priorities, location) {
   let finalArr = [];
