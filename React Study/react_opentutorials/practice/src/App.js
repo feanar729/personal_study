@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TOC from './components/TOC';
-import Content from './components/Content';
+import ReadContent from './components/ReadContent';
 import Subject from './components/Subject';
 import './App.css';
 import { Control } from './components/Control';
@@ -24,9 +24,11 @@ class App extends Component {
     console.log('App render');
     let title = null;
     let desc = null;
+    let article = null;
     if (this.state.mode === 'welcome') {
       title = this.state.welcome.title;
       desc = this.state.welcome.desc;
+      article = <ReadContent title={title} desc={desc} />;
     } else if (this.state.mode === 'read') {
       let i = 0;
       while (i < this.state.contents.length) {
@@ -38,6 +40,7 @@ class App extends Component {
         }
         i = i + 1;
       }
+      article = <ReadContent title={title} desc={desc} />;
     }
     return (
       <div className="App">
@@ -62,7 +65,7 @@ class App extends Component {
             this.setState({ mode: _mode });
           }.bind(this)}
         />
-        <Content title={title} desc={desc} />
+        {article}
       </div>
     );
   }
