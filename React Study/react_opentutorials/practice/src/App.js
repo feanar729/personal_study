@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TOC from './components/TOC';
 import ReadContent from './components/ReadContent';
+import CreateContent from './components/CreateContent';
 import Subject from './components/Subject';
 import './App.css';
 import { Control } from './components/Control';
@@ -8,8 +9,9 @@ import { Control } from './components/Control';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.max_content_id = 3;
     this.state = {
-      mode: 'read',
+      mode: 'create',
       selected_content_id: 2,
       subject: { title: 'WEB', sub: 'World Wide Web!' },
       welcome: { title: 'Welcome', desc: 'Hello, React!!' },
@@ -41,6 +43,21 @@ class App extends Component {
         i = i + 1;
       }
       article = <ReadContent title={title} desc={desc} />;
+    } else if (this.state.mode === 'create') {
+      article = (
+        <CreateContent
+          onSubmit={function(title, desc) {
+            let concatData = this.state.contents.concat({
+              id: this.max_content_id + 1,
+              title: title,
+              desc: desc,
+            });
+            this.setState({
+              contents: concatData,
+            });
+          }.bind(this)}
+        />
+      );
     }
     return (
       <div className="App">
