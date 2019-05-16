@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TOC from './components/TOC';
 import ReadContent from './components/ReadContent';
 import CreateContent from './components/CreateContent';
+import UpdateContent from './components/UpdateContent';
 import Subject from './components/Subject';
 import './App.css';
 import { Control } from './components/Control';
@@ -22,26 +23,27 @@ class App extends Component {
       ],
     };
   }
-  render() {
+
+  getReadContent() {
+    let i = 0;
+    while (i < this.state.contents.length) {
+      let data = this.state.contents[i];
+      if (data.id === this.state.selected_content_id) {
+        return data;
+      }
+      i = i + 1;
+    }
+  }
+
+  getContent() {
     console.log('App render');
     let title = null;
     let desc = null;
     let article = null;
     if (this.state.mode === 'welcome') {
-      title = this.state.welcome.title;
-      desc = this.state.welcome.desc;
-      article = <ReadContent title={title} desc={desc} />;
+      let content = this.getReadContent();
+      article = <ReadContent title={content.title} desc={content.desc} />;
     } else if (this.state.mode === 'read') {
-      let i = 0;
-      while (i < this.state.contents.length) {
-        let data = this.state.contents[i];
-        if (data.id === this.state.selected_content_id) {
-          title = data.title;
-          desc = data.desc;
-          break;
-        }
-        i = i + 1;
-      }
       article = <ReadContent title={title} desc={desc} />;
     } else if (this.state.mode === 'create') {
       article = (
@@ -59,7 +61,29 @@ class App extends Component {
           }.bind(this)}
         />
       );
+    } else if (this.state.mode === 'update') {
+      let content = this.getReadContent();
+      article = (
+        <UpdateContent
+          data={content}
+          onSubmit={function(title, desc) {
+            let newContents = Array.from(this.state.contents);
+            newContents.push({
+              id: this.max_content_id + 1,
+              title: title,
+              desc: desc,
+            });
+            this.setState({
+              contents: newContents,
+            });
+          }.bind(this)}
+        />
+      );
     }
+    return article;
+  }
+
+  render() {
     return (
       <div className="App">
         <Subject
@@ -83,7 +107,7 @@ class App extends Component {
             this.setState({ mode: _mode });
           }.bind(this)}
         />
-        {article}
+        {this.getContent()}
       </div>
     );
   }
