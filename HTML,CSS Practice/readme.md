@@ -5,4 +5,4 @@
 - https://codesandbox.io/s/xrnq5noxz4 : Keyframe + hover 기능
 
 - https://codesandbox.io/s/nostalgic-shannon-z7ree : tweenMax.js & SASS 활용 예제 따라하기
-  > [tweenMaX Package](https://greensock.com/tweenmax) / [05.21일 HTML 기록]()
+  > [tweenMaX Package](https://greensock.com/tweenmax) / [05.21일 HTML 기록](../../personal Study/personal Goals(daily,week)/5월/05.21.md)
