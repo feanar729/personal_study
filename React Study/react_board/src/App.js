@@ -4,7 +4,7 @@ import ReadContent from './components/ReadContent';
 import CreateContent from './components/CreateContent';
 import UpdateContent from './components/UpdateContent';
 
-import Subject from './components/Subject';
+import Header from './components/Header';
 import Control from './components/Control';
 import { Router } from 'react-router-dom';
 
@@ -13,15 +13,15 @@ class App extends Component {
     super(props);
     this.max_content_id = 3;
     this.state = {
-      mode: 'read',
+      mode: 'READ',
       selected_content_id: 1,
       subject: { title: 'Board', sub: '게시판 만들기' },
-      contents: [
+      contents: [],
+      testContent: [
         { id: 1, title: 'HTML', desc: 'HTML is for information' },
         { id: 2, title: 'CSS', desc: 'CSS is for design' },
         { id: 3, title: 'JavaScript', desc: 'JavaScript is for interactive' },
       ],
-      testContent: [],
     };
   }
 
@@ -29,6 +29,7 @@ class App extends Component {
     const selected_id = this.state.selected_content_id;
     const data = this.state.contents;
 
+    console.log(data, 'GetData');
     for (let val of data) {
       if (val.id === selected_id) return val;
     }
@@ -44,29 +45,25 @@ class App extends Component {
     });
     this.setState({
       contents: shallowContent,
-      mode: 'read',
+      mode: 'READ',
       selected_content_id: this.max_content_id,
     });
   }
 
   getUpdateContent(_id, _title, _desc) {
-    let shallowContent = Array.from(this.state.contents);
-    let i = 0;
-    while (i < shallowContent.length) {
-      if (shallowContent[i].id === _id) {
-        shallowContent[i] = { id: _id, title: _title, desc: _desc };
-        break;
-      }
-      i = i + 1;
+    let contents = Array.from(this.state.contents);
+
+    for (let index in contents) {
+      if (contents[index].id === _id) contents[index] = { id: _id, title: _title, desc: _desc };
     }
     this.setState({
-      contents: shallowContent,
-      mode: 'read',
+      contents: contents,
+      mode: 'READ',
     });
   }
 
   onDelete(_mode) {
-    if (_mode === 'delete') {
+    if (_mode === 'DELETE') {
       if (window.confirm('really?')) {
         let selected_id = this.state.selected_content_id;
         let _contents = Array.from(this.state.contents);
@@ -76,7 +73,7 @@ class App extends Component {
         }
 
         this.setState({
-          mode: 'read',
+          mode: 'READ',
           selected_content_id: 1,
           contents: _contents,
         });
@@ -91,25 +88,26 @@ class App extends Component {
 
   setChangePage(id) {
     this.setState({
-      mode: 'read',
+      mode: 'READ',
       selected_content_id: Number(id),
     });
   }
 
   componentWillMount() {
     console.log('ComponetnWillMount 단계');
+    // console.log('ComponetnDidMount 단계');
     let _title = null;
     let _desc = null;
     let _article = <ReadContent title={_title} desc={_desc} />;
 
-    if (this.state.mode === 'read') {
+    if (this.state.mode === 'READ') {
       let _content = this.setReadMode();
-      _article = <ReadContent title={_content.title} desc={_content.desc} />;
-    } else if (this.state.mode === 'create') {
+      _article = <ReadContent title={_content.board_name} />;
+    } else if (this.state.mode === 'CREATE') {
       _article = (
         <CreateContent onSubmit={(_title, _desc) => this.getCreateContent(_title, _desc)} />
       );
-    } else if (this.state.mode === 'update') {
+    } else if (this.state.mode === 'UPDATE') {
       let _content = this.setReadMode();
       _article = (
         <UpdateContent
@@ -121,29 +119,36 @@ class App extends Component {
     return _article;
   }
 
-  componentDidMount(boardID) {
-    console.log('ComponetnDidMount 단계');
-    boardID = 1;
-    const url = `http://27.1.60.24:9900/board/boardList`;
+  getRequestData() {
+    let url = `http://27.1.60.24:9900/board/boardList`;
     const init = { method: 'GET' };
+
     fetch(url, init)
       .then(response => response.json())
       .then(jsonObj => {
-        let boardList = Array.from(this.state.testContent);
+        let boardList = Array.from(this.state.contents);
         boardList.push(jsonObj.boardList);
         this.setState({
-          testContent: boardList,
+          contents: boardList,
         });
-        console.log(boardList, 'testcontent');
+        console.log(boardList, 'boardList');
+      })
+      .catch(error => {
+        console.error(error);
       });
   }
 
-  // willmount단계 가공 => state (refactoring / Life사이클에 맞게)
+  componentDidMount() {
+    // console.log('ComponetnDidMount 단계');
+    this.getRequestData();
+  }
+
   render() {
-    console.log('App render');
+    console.log('Render 단계');
+    this.getRequestData();
     return (
       <div className="App">
-        <Subject title={this.state.subject.title} sub={this.state.subject.sub} />
+        <Header title={this.state.subject.title} sub={this.state.subject.sub} />
         <ItemList onChangePage={id => this.setChangePage(id)} data={this.state.contents} />
         <Control onChangeMode={_mode => this.onDelete(_mode)} />
         {this.componentWillMount()}

@@ -2,33 +2,35 @@ import React, { Component } from 'react';
 
 class ItemList extends Component {
   shouldComponentUpdate(newProps, newState) {
-    console.log('===> Menu render shouldComponentUpdate');
+    // console.log('===> Menu render shouldComponentUpdate');
     if (this.props.data === newProps.data) return false;
     else return true;
   }
 
-  render() {
-    console.log('Menu render');
+  getItemList() {
     let lists = [];
     let data = this.props.data;
-    let i = 0;
-    while (i < data.length) {
+    for (let index in data) {
       lists.push(
-        <li key={data[i].id}>
+        <li key={data[index].id}>
           <a
-            href={'/content/' + data[i].id}
-            data-id={data[i].id}
+            href={'/content/' + data[index].id}
+            data-id={data[index].id}
             onClick={e => {
               e.preventDefault();
               this.props.onChangePage(e.target.dataset.id);
             }}
           >
-            {data[i].title}
+            {data[index].title}
           </a>
         </li>,
       );
-      i = i + 1;
     }
+    return lists;
+  }
+
+  render() {
+    let lists = this.getItemList();
     return (
       <nav>
         <ul>{lists}</ul>

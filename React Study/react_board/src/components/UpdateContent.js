@@ -16,7 +16,7 @@ class UpdateContent extends Component {
   }
 
   render() {
-    console.log('UpdateContent render');
+    // console.log('UpdateContent render');
     return (
       <article>
         <h2>Update</h2>

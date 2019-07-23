@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-class Subject extends Component {
+class Header extends Component {
   render() {
-    console.log('Subject render');
     return (
       <header>
         <h1>{this.props.title}</h1>
@@ -11,4 +10,4 @@ class Subject extends Component {
   }
 }
 
-export default Subject;
+export default Header;

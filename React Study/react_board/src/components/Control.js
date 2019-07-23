@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 class Control extends Component {
-  debugger;
   render() {
-    console.log('Subject render');
+    // console.log('Control render');
     return (
       <ul>
         <li>
@@ -10,7 +9,7 @@ class Control extends Component {
             href="/create"
             onClick={e => {
               e.preventDefault();
-              this.props.onChangeMode('create');
+              this.props.onChangeMode('CREATE');
             }}
           >
             create
@@ -21,7 +20,7 @@ class Control extends Component {
             href="/update"
             onClick={e => {
               e.preventDefault();
-              this.props.onChangeMode('update');
+              this.props.onChangeMode('UPDATE');
             }}
           >
             update
@@ -31,7 +30,7 @@ class Control extends Component {
           <input
             onClick={e => {
               e.preventDefault();
-              this.props.onChangeMode('delete');
+              this.props.onChangeMode('DELETE');
             }}
             type="button"
             value="delete"
