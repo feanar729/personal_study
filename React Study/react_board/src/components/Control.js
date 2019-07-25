@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 class Control extends Component {
   render() {
-    // console.log('Control render');
+    console.log('Control Component render');
     return (
       <ul>
         <li>

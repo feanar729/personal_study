@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-class CreateContent extends Component {
+class TestCreateContent extends Component {
   render() {
-    console.log('CreateContent Component render');
+    // console.log('CreateContent render');
     return (
       <article>
         <h2>Create</h2>
@@ -29,4 +29,4 @@ class CreateContent extends Component {
   }
 }
 
-export default CreateContent;
+export default TestCreateContent;

@@ -21,7 +21,7 @@ class ItemList extends Component {
               this.props.onChangePage(e.target.dataset.id);
             }}
           >
-            {data[index].title}
+            {data[index].title ? data[index].title : data[index].board_name}
           </a>
         </li>,
       );

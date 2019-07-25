@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class UpdateContent extends Component {
+class TestUpdateContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +16,7 @@ class UpdateContent extends Component {
   }
 
   render() {
-    console.log('UpdateContent Component render');
+    console.log('TestUpdateContent render');
     return (
       <article>
         <h2>Update</h2>
@@ -55,4 +55,4 @@ class UpdateContent extends Component {
   }
 }
 
-export default UpdateContent;
+export default TestUpdateContent;
