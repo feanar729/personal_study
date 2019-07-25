@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import ItemList from './components/ItemList';
-// import TestReadContent from './components/TestReadContent';
 // import TestCreateContent from './components/TestCreateContent';
 // import TestUpdateContent from './components/TestUpdateContent';
 import ReadContent from './components/ReadContent';
 
 import Header from './components/Header';
-// import Control from './components/Control';
-// import { Router } from 'react-router-dom';
+import Control from './components/Control';
 
 class App extends Component {
   constructor(props) {
@@ -20,8 +18,6 @@ class App extends Component {
       postList: [],
       postDetailContents: [],
     };
-    // this.article = null;
-    // this.content = null;
   }
 
   // getCreateContent(_title, _desc) {
@@ -170,25 +166,20 @@ class App extends Component {
     this.getRequestDetailData();
   }
 
-  // shouldComponentUpdate(newProps, newState) {
-  //   if (this.state.selected_content_id !== newState.selected_content_id) {
-  //     console.log(this.state.selected_content_id, newState.selected_content_id);
-  //     // let selectedByID = this.state.selected_content_id;
-  //     // this.getRequestDetailData(selectedByID);
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
   render() {
     console.log('Render 단계');
     return (
       <div className="App">
         <Header title={this.state.subject.title} sub={this.state.subject.sub} />
         {/* <ItemList onChangePage={id => this.setChangePage(id)} data={this.state.postList} /> */}
-        <ItemList onChangePage={id => this.setChangePage(id)} data={this.state.postList} />
-        {/* <Control onChangeMode={_mode => this.onDelete(_mode)} /> */}
+        <ItemList
+          onChangePage={id => {
+            this.setChangePage(id);
+            this.getRequestDetailData(id);
+          }}
+          data={this.state.postList}
+        />
+        <Control onChangeMode={_mode => this.onDelete(_mode)} />
         <ReadContent data={this.state.postDetailContents} />
       </div>
     );
