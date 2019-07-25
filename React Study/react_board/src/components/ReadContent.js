@@ -4,10 +4,14 @@ class TestReadContent extends Component {
   render() {
     console.log('ReadContent Component render');
     return (
-      <article>
-        <h2>{this.props.id}</h2>
-        {this.props.board_name}
-      </article>
+      <div>
+        <h2>{this.props.data.post_title}</h2>
+        <span>
+          <p>{this.props.data.post_content}</p>
+          <p>{this.props.data.post_reg_date}</p>
+          <p>{this.props.data.post_user_name}</p>
+        </span>
+      </div>
     );
   }
 }
