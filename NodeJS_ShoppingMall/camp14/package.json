@@ -1,0 +1,16 @@
+{
+  "name": "camp14",
+  "version": "1.0.0",
+  "description": "쇼핑몰",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon app.js",
+    "dev": "npx nodemon app.js"
+  },
+  "author": "이현배",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
